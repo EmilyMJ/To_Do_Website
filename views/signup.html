@@ -1,0 +1,66 @@
+{% extends "template.html" %}
+
+{% block content %}
+
+<h1>Sign Up</h1>
+<p>Sign up to continue</p>
+
+<!-- Sign up form for new users -->
+<!-- Made the fields required so that users have to fill in all of their details to successfully create a login -->
+
+<div class="signup-form">
+  <!-- <h1 class="subheader_signup">Sign Up Now!</h1> -->
+  <!-- <% if (db == null) { %>
+              <!Error message displayed if entered info does not match a user in the db -->
+  <!-- <%= errorMessage %>
+              <h1 class="subheader_signup">Log In</h1> -->
+  <!-- Log in form for existing users -->
+  <!-- <form action="/checkCredentials" method="post" class="signup-form">
+                  <div> -->
+
+
+  <div>
+    <form action="/signup/submit" method="POST" class="signup-form">
+      <div class="signup-form">
+        <label for="inputFirst" class="col-sm-2 control-label text-black">First Name:</label>
+        <div class="col-sm-10">
+          <input type="name" class="form-control" id="inputFirst" placeholder="First Name" required>
+        </div>
+        <div class="signup-form">
+          <label for="inputSurname" class="col-sm-2 control-label text-black">Surname:</label>
+          <div class="col-sm-10">
+            <input type="surname" class="form-control" id="inputSurname" placeholder="Surname" required>
+          </div>
+          <div class="signup-email">
+            <label for="inputEmail" class="col-sm-2 control-label text-black">Email:</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+            </div>
+            <div class="signup-form">
+              <label for="inputPassword" class="col-sm-2 control-label text-black">Password:</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+              </div>
+              <div class="signup-form">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <!-- <input type="submit" class="submit" value="submit"></input> -->
+                  <button type="submit" class="btn btn-lg btn-info btn-block" style="margin-top: 20px" >Sign Up</button>
+                </div>
+              </div>
+              <!-- NEEDS linking to sign in page -->
+              <div class="form-footer text-black" style="margin-left: 20px">
+                Already have an account?
+                <a href="../views/login.html"></a>Login now</div>
+            </div>
+            <!-- <div class="submit_div">
+        <input type="submit" class="submit" value="Submit">
+      </div> -->
+
+          </div>
+        </div>
+        <div>
+          <!-- https://www.w3schools.com/html/html_classes.asp -->
+          <!-- <img src="..." class="img-fluid" alt="Responsive image"> -->
+        </div>
+        <!-- <script src="../js/user.js"></script> -->
+{% endblock %}

@@ -1,0 +1,55 @@
+/* Makes the image full screen through .view */
+html,
+body,
+header,
+.view {
+  height: 100%;
+}
+
+@media (max-width: 740px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 100hv;
+  }
+}
+
+
+h1 {
+  letter-spacing: 8px;
+  
+}
+
+h5 {
+  letter-spacing: 4px;
+}
+
+.hr-light {
+  border-top: 3px solid;
+  width: 100px;
+  
+}
+
+.btn-change{
+  height: 40px;
+  width: 100px;
+  /* background: rgb(255, 255, 255); */
+  opacity: 0.7;
+  margin: 30px;
+  /* float: centre; */
+  /* box-shadow: 0 0 1px #ccc; */
+  -webkit-transition: all 0.5s ease-in-out;
+  border: 0px;
+  color: black
+  
+ 
+}
+.btn-change:hover{
+  -webkit-transform: scale(1.1);
+  background: black;
+  color: white
+}
+
+
+

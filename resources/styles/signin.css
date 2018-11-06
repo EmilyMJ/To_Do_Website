@@ -1,0 +1,33 @@
+/* .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: grey !important; */
+/* } */
+/* Overwriting the bootstrap btn-primary color to change the button from blue to grey */
+
+/* Makes the image full screen through .view */
+html,
+body,
+header,
+.view {
+  height: 100%;
+}
+
+@media (max-width: 740px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 100hv;
+  }
+}
+
+h1{
+-webkit-text-fill-color: white;
+padding-top: 20px;
+padding-left: 15px;
+text-align: center;
+}
+
+p{
+  -webkit-text-fill-color: white;
+  padding-left: 15px;
+}

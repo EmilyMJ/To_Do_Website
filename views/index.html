@@ -1,0 +1,21 @@
+{% extends "template.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 mb-4 text-black text-center">
+        <!-- Main header -->
+        <h1 class="h1-reponsive text-black text-uppercase font-weight-bold mb-0 pt-md-5 pt-5">
+            <strong>To Do List</strong>
+        </h1>
+        <hr class="hr-light my-4">
+        <h5 class="text-uppercase mb-4 text-black">
+            <strong>Project Management</strong>
+        </h5>
+        <!-- Sign In and Sign Up buttons with a change of colour when hovered over -->
+        <a class="btn border-black btn-change" href="/login">Login</a>
+        <a class="btn border-black btn-change" href="/signup">Sign Up</a>
+        <!-- Simple front page with minimalistic writing which leads onto either a sign in or sign up page so all users must be signed in to use the app -->
+    </div>
+</div>
+{% endblock %}
+

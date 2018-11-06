@@ -1,0 +1,29 @@
+{% extends "template.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 mb-4 text-black text-center">
+      <h1> View All Tasks</h1>
+      <p> These are your to do lists</p>
+    
+      <form id="ViewAll" action="/viewAll" method="GET"></form>
+<!-- Displaying tasks from the database -->
+      <div class="row">
+          {% for task in tasks %}
+          <div class="col-sm">
+              <div class="col-xs-12">
+                  <a href="/task/{{ task.id }}">{{ task.title }}</a>
+              </div>
+              <div class="col-sm text-black">
+                  {{ task.content }}
+              </div>
+              <!-- Delete the task from the database -->
+              <button type="Button" id="deleteButton" class="btn btn-light" onclick="deleteTask('{{ task._id }}')">Delete Task
+              </button>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+</div>
+<script src="/resources/js/viewall.js"></script>
+{% endblock %}
