@@ -51,5 +51,40 @@ h5 {
   color: white
 }
 
+#tile{
+  width: auto;
+  height: auto; 
+  background-color: white;
+  margin: 15px; 
+  padding-bottom: 2px;
+  padding-top: 10px;
+  /* list-style: none; */
+   /* display: -webkit-inline-box; */
+  /* border-style: double; */
+  display: inline-block;
+  /*overflow-y: auto; */
+
+
+  
+} 
+
+.signup-form{ 
+  background-color: white;
+  /* /* margin: 15px; /* */
+  padding-bottom: 5px; 
+  padding-top: 10px;
+}
+
+.login-form{
+  background-color: white;
+  /* /* margin: 15px; /* */
+  padding-bottom: 5px; 
+  padding-top: 10px;
+}
+
+
+
+
+
 
 

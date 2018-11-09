@@ -1,13 +1,10 @@
+// var taskID = document.location.pathname.split("/").pop()
+
+
 function deleteTask(task) {
     console.log(task);
+
+    // fetch('task')
 }
 
-document.getElementById("deleteButton").addEventListener("onclick", (ev)=> {
-    ev.preventDefault();
-   
-    fetch('/tasks/' + taskID, {
-        method: 'delete'
-    })
-    
-    document.location.href = '/viewall.html'  
-});
+

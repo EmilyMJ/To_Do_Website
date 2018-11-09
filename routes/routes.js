@@ -20,7 +20,7 @@ module.exports = function(app) {
     // app.put('/task/:taskId', task.update);
 
     // Delete a Task
-    // app.delete('/viewAll/:taskId', taskController.delete);
+    app.delete('/deleteTask/:taskId', taskController.deleteTask);
 
     // Home
     app.get('/', homeController.home);

@@ -1,10 +1,8 @@
-{% extends "template.html" %}
-
-{% block content %}
-
-<h1>Sign Up</h1>
-<p>Sign up to continue</p>
-
+{% extends "template.html" %} {% block content %}
+<div class="col-md-12 mb-4 text-black text-center">
+  <h1 class="text-centre">Sign Up</h1>
+  <p>Sign up to continue</p>
+</div>
 <!-- Sign up form for new users -->
 <!-- Made the fields required so that users have to fill in all of their details to successfully create a login -->
 
@@ -44,7 +42,7 @@
               <div class="signup-form">
                 <div class="col-sm-offset-2 col-sm-10">
                   <!-- <input type="submit" class="submit" value="submit"></input> -->
-                  <button type="submit" class="btn btn-lg btn-info btn-block" style="margin-top: 20px" >Sign Up</button>
+                  <button type="submit" class="btn btn-lg btn-info btn-block" style="margin-top: 20px">Sign Up</button>
                 </div>
               </div>
               <!-- NEEDS linking to sign in page -->
@@ -63,4 +61,4 @@
           <!-- <img src="..." class="img-fluid" alt="Responsive image"> -->
         </div>
         <!-- <script src="../js/user.js"></script> -->
-{% endblock %}
+        {% endblock %}

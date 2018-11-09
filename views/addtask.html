@@ -61,11 +61,21 @@
 
             <div>
                 <label for="title" class="col-sm-2 control-label">Task Title:</label>
-                <input type="text" class="form-control" name="title" id="title" placeholder="Enter a Title">
+                <input type="text" class="form-control" name="title" id="title" placeholder="Task Title">
             </div>
             <div>
-                <label for="content">Task Description:</label>
-                <input type="text" class="form-control" name="content" id="content" placeholder="Enter on Text Description">
+                <label for="content" class="col-sm-2 control-label">Task Description:</label>
+                <input type="text" class="form-control" name="content" id="content" placeholder="Task Description">
+            </div>
+            <div>
+                <label for="priority" class="col-sm-2 control-label" >Task Priority:</label>
+                <!-- <input type="text" id="priority"> -->
+                <select name="priority">
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                    <option value="No Priority">None</option>
+                </select>
             </div>
 
             <div class="col-sm-offset-2 col-sm-10">
@@ -78,13 +88,3 @@
 </body>
 
 </html>
-
-<!-- <div>f
-            <label for="priority">Task Priority:</label>
-            <input type="text" name="priority" id="priority" placeholder="Set a Priority">
-        </div> -->
-
-<!-- <div>
-            <label for="taskBand">Task Band:</label>
-            <input type="color" name="taskBand" id="taskBand">
-        </div> -->

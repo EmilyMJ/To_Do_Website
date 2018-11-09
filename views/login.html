@@ -1,12 +1,11 @@
-{% extends "template.html" %}
-
-{% block content %}
-
-<h1>Login</h1>
-<p>Login to continue</p>
+{% extends "template.html" %} {% block content %}
+<div class="col-md-12 mb-4 text-black text-center">
+  <h1 class="text-centre">Login</h1>
+  <p>Login to your account to continue</p>
+</div>
 
 {% if message %}
-  <p>{{ message }}</p>
+<p>{{ message }}</p>
 {% endif %}
 
 <form action="/login" method="post">
@@ -26,6 +25,11 @@
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-lg btn-info btn-block" style="margin-top: 20px">Login</button>
     </div>
+
+    <div class="form-footer text-black" style="margin-left: 20px">
+      Don't have an account?
+      <a href="../views/signup.html"></a>Sign Up Now!</div>
+  </div>
   </div>
 </form>
 {% endblock %}

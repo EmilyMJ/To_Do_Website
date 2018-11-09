@@ -1,29 +1,61 @@
-{% extends "template.html" %}
+{% extends "template.html" %} {% block content %}
 
-{% block content %}
+<!-- Navigation bar with dark theme  -->
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">To Do List</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <!-- Menu List -->
+        <!-- Set the class to active so that it highlights and lets the user know what page they are on -->
+        <!-- <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Manage Tasks</a>
+                </li>
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>  -->
+
 <div class="row">
     <div class="col-md-12 mb-4 text-black text-center">
-      <h1> View All Tasks</h1>
-      <p> These are your to do lists</p>
-    
-      <form id="ViewAll" action="/viewAll" method="GET"></form>
-<!-- Displaying tasks from the database -->
-      <div class="row">
-          {% for task in tasks %}
-          <div class="col-sm">
-              <div class="col-xs-12">
-                  <a href="/task/{{ task.id }}">{{ task.title }}</a>
-              </div>
-              <div class="col-sm text-black">
-                  {{ task.content }}
-              </div>
-              <!-- Delete the task from the database -->
-              <button type="Button" id="deleteButton" class="btn btn-light" onclick="deleteTask('{{ task._id }}')">Delete Task
-              </button>
-          </div>
-        {% endfor %}
-      </div>
+           
+        <h1> View All Tasks</h1>
+        <p> These are your to do lists</p>
+
+        <form id="ViewAll" action="/viewAll" method="GET"></form>
+        <!-- Displaying tasks from the database -->
+
+        <div class="row">
+                {% for task in tasks %}
+                <div id="tile">
+                <div class="col-sm">
+                    <div class="col-xs-12">
+                        <a href="/task/{{ task.id }}">{{ task.title }}</a>
+                    </div>
+                    <div class="col-xs-12 text-black">
+                        {{ task.content }}
+                    </div>
+                    <div class="col-xs-12 text-black">
+                            {{ task.priority }}
+                        </div>
+                    <!-- Delete the task from the database -->
+                    <button id="deleteButton" class="btn btn-light" onclick="deleteTask('{{ task._id }}')">Delete Task
+                    </button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </div>
-<script src="/resources/js/viewall.js"></script>
-{% endblock %}
+<script src="/resources/js/viewall.js"></script> {% endblock %}
