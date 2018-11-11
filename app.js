@@ -37,9 +37,6 @@ mongoose.connect(dbConfig.url, {
 // Find static files from the directory
 app.use("/resources", express.static(__dirname + '/resources'));
 
-app.use(bodyParser.urlencoded({ extended: true}))
-app.use(bodyParser.json());
-
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -55,11 +52,6 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
-
-//getting passport for login
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
 
 passport.use(new LocalStrategy({
     usernameField: 'username',
@@ -93,26 +85,14 @@ passport.deserializeUser(function (id, done) {
     });
 });
 
+//getting passport for login
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+
 // Define all the routes
 defineRoutes(app);
-
-// get signup html and render onto screen 
-app.get("/signup", function(req, res) {
-    res.render('signup.html');
-});
-
-app.post("/signup/submit", app ,function(req, res) {
-    // Create new user from submission form -- DOESNT WORK
-    var newUser = new User ({
-        firstname: req.body.firstname,
-        surname: req.body.surname,
-        email: req.body.email,
-        password: req.body.password,
-        active: true,
-    });
-    newUser.save();
-    res.redirect("/");
-});
 
 // listening for requests
 app.listen(3000, () => {

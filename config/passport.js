@@ -1,7 +1,7 @@
 var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy;
 
-passport.use(new LocalStrategy(
+passport.use(new LocalStrategy({
     function (username, password, done) {
         User.findOne({ username: username }, function (err, user) {
             if (err) { return done(err); }
@@ -13,6 +13,7 @@ passport.use(new LocalStrategy(
             }
             return done(null, user);
         });
+    }
     }
 ));
 // This allows usernames and passwords to be locally authenticated when submitted on the signin/sighnup pages

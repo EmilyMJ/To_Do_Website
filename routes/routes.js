@@ -37,5 +37,8 @@ module.exports = function(app) {
     // login
     app.post('/login', userController.login);
     app.get('/login', userController.viewLogin);
+
+    app.post('/signup', userController.signup);
+    app.get('/signup', userController.viewSignup);
     
 };
