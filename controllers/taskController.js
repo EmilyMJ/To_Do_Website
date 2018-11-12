@@ -3,12 +3,23 @@ const Task = require('../models/task.js');
 
 // Viewing all the tasks
 module.exports.viewAll = function (req, res) {
-    Task.find(function (err, result) {
+    // [Object object]
+    // console.log(JSON.stringify({user: 'will', id: 'billion'}));
+    console.log(req.user)
+    Task.find({userID: req.user._id},function (err, result) {
+        
         res.render('viewall.html', {
             tasks: result
         });
     });
 };
+
+
+
+// TODO JKDSJKDKS
+
+
+// TODO relate to user ID
 
 module.exports.viewAddTask = function (req, res) {
     res.render('addtask.html');
@@ -20,7 +31,8 @@ module.exports.addTask = function (req, res) {
     var myData = new Task({
         title: req.body.title,
         content: req.body.content || "No description",
-        priority: req.body.priority || "No priority"
+        priority: req.body.priority || "No priority",
+        userID: req.user._id
     });
     // Validate the request so that their must be a title for the task
     // content and priority can be empty

@@ -70,7 +70,9 @@ passport.use(new LocalStrategy({
             if (!user.validPassword(password)) {
                 return done(null, false, { message: 'Incorrect password.' });
             }
+            console.log("successfully logged in")
             return done(null, user);
+        
         });
     }
 ));
@@ -84,6 +86,12 @@ passport.deserializeUser(function (id, done) {
         done(err, user);
     });
 });
+
+app.get('/logout', function(req, res){ 
+    console.log("logging out")
+    req.logout();
+    res.redirect('/');
+  });
 
 //getting passport for login
 app.use(passport.initialize());

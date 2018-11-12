@@ -55,10 +55,9 @@ h5 {
   width: auto;
   height: auto; 
   background-color: white;
-  /* margin: 15px;  */ 
-  /* padding-bottom: 2px; */
-  /* padding-top: 10px; */
-  /* border-style: double; */
+  margin: 30px;  
+  padding: 20px;
+  border-style: double;
   display: -webkit-inline-flex;
 
 } 
@@ -76,8 +75,6 @@ h5 {
   padding-bottom: 5px; 
   padding-top: 10px;
 }
-
-
 
 
 

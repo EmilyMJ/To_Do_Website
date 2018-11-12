@@ -4,7 +4,7 @@ const User = require('../models/user.js');
 module.exports.login = passport.authenticate('local', {
 // app.post('/login'),
 // passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/viewall',
     failureRedirect: '/login',
     failureFlash: true
 });
