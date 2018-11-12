@@ -1,7 +1,7 @@
 {% extends "template.html" %} {% block content %}
 <div class="col-md-12 mb-4 text-black text-center">
   <h1 class="text-centre">Sign Up</h1>
-  <p>Sign up to continue</p>
+  <p>Sign Up to create an account and start yout To Do List</p>
 </div>
 <!-- Sign up form for new users -->
 <!-- Made the fields required so that users have to fill in all of their details to successfully create a login -->
@@ -37,7 +37,7 @@
       <div class="signup-form">
         <label for="username" class="col-sm-2 control-label text-black">Username:</label>
         <div class="col-sm-10">
-          <input name="username" type="text" class="form-control" id="inputFirst" placeholder="User name" required>
+          <input name="username" type="text" class="form-control" id="inputFirst" placeholder="Username" required>
         </div>
       </div>
 
@@ -47,7 +47,7 @@
           <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Email" required>
         </div>
       </div>
-
+    </a>
 
       <div class="signup-form">
         <label for="password" class="col-sm-2 control-label text-black">Password:</label>
@@ -63,10 +63,10 @@
           <button type="submit" class="btn btn-lg btn-info btn-block" style="margin-top: 20px">Sign Up</button>
         </div>
       </div>
-      <!-- NEEDS linking to sign in page -->
+      <!-- This links to the login page if people already have an account  -->
       <div class="form-footer text-black" style="margin-left: 20px">
         Already have an account?
-        <a href="../views/login.html"></a>Login now
+        <a href="../login">Login now!</a>
       </div>
     </form>
   </div>

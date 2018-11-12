@@ -54,7 +54,39 @@ module.exports.deleteTask = function (req, res) {
             console.log("error")
         }
     });
+
 }
+
+// module.exports.deleteTask = function (req, res) {
+//     Task.remove({ _id: req.params.taskId }, function (err) {
+//         if (!err) {
+            
+//             myData.deleteTask()
+//         .then(item => {
+//             res.redirect('/viewall?success');
+//         })
+//         .catch(err => {
+//             res.redirect('/viewall?fail');
+//             // console.log("workss")
+//         });
+//     };
+
+//     )}
+// }
+
+//         taskId: req.body.title,
+
+// document.getElementById("deleteButton").addEventListener("click", (ev) => {
+//     ev.preventDefault();
+
+//     // Delete the task
+//     fetch('/tasks/' + taskID, {
+//         method: 'delete'
+//     })
+
+//     // Send the user to the homepage where their task will no longer show
+//     document.location.href = '/'
+// });
 
 // exports.delete = (req, res) => {
     //     Task.findByIdAndRemove(req.params.taskId)
@@ -81,21 +113,4 @@ module.exports.deleteTask = function (req, res) {
 //             res.redirect('/taskdeleted?fail');
 //         });
 //     });
-// };
-
-// Delete a task with the specified taskId in the request
-// module.exports.deleteTask = function(req, res) {
-//     Task.findByIdAndRemove(req.params.taskId)
-//  var myData = delete task({})
-//         taskId: req.body.title,
-
-
-
-// app.post("/delete/:id", function(req, res) {
-//     // Find the current user and set the active property to false (Log out the user.)
-//    Task.findOneAndUpdate({_id: req.params.id}, { $set: { active: false }}, function(err, data) {
-//         console.log(data);
-//         data.active = false;    //Log the user out.
-//         res.redirect("/");
-//     });
-// })
+// });

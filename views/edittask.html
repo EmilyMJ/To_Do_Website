@@ -1,20 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=
-    , initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> Edit Task</title>
+    <title>Edit Task</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/resources/styles/mobileindex.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+
 </head>
-<body>
-    <h1>Edit Task</h1>
-    <h1> Add a New Task</h1>
-   
 
 
-        
- 
+<!-- Navigation bar with dark theme  -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">To Do List</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu List -->
+    <!-- Set the class to active so that it highlights and lets the user know what page they are on -->
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <!-- <li class="nav-item active">
+                <a class="nav-link" href="#">Home
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" href="../viewAll">View all Tasks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../addtask">Add a Task</a>
+            </li>
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Logout</a>
+            </li>
+        </ul>
     </div>
+</nav>
+
+
+<body>
+
+    <div class="col-md-12 mb-4 text-black text-center">
+
+        <h1>Edit Your Task</h1>
+    </div>
+
+
+
+    <form id="myAddForm" action="/addTask" method="POST">
+
+
+        <div>
+            <label for="title" class="col-sm-2 control-label">Task Title:</label>
+            <input type="text" class="form-control" name="title" id="title" placeholder="Task Title">
+        </div>
+        <div>
+            <label for="content" class="col-sm-2 control-label">Task Description:</label>
+            <input type="text" class="form-control" name="content" id="content" placeholder="Task Description">
+        </div>
+        <div>
+            <label for="priority" class="col-sm-2 control-label">Task Priority:</label>
+            
+            <select name="priority">
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+                <option value="No Priority">None</option>
+            </select>
+        </div>
+
+        <div class="col-sm-offset-2 col-sm-12">
+            <button type="submit" class="btn btn-lg btn-info btn-block" style="margin-top: 20px">Submit Changes</button>
+        </div>
+    </form>
+    </div>
+
+    <script> src = "../js/routes.js"</script>
 </body>
+
 </html>
