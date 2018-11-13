@@ -8,7 +8,6 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
 const LocalStrategy = require('passport-local').Strategy;
-
 const nunjucksEnv = nunjucks.configure('views', {
     autoescape: true,
     express: app
@@ -24,11 +23,11 @@ const User = require('./models/user.js');
 
 mongoose.Promise = global.Promise;
 
-// Connecting to the database
+// Connecting to the Mongo Database
 mongoose.connect(dbConfig.url, {
     useNewUrlParser: true
 }).then(() => {
-    console.log("Successfully connected to the database");    
+    console.log("Successfully connected to the database");
 }).catch(err => {
     console.log('Could not connect to the database. Exiting now.', err);
     process.exit();
@@ -43,7 +42,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // parse requests of content-type - application/json
 app.use(bodyParser.json())
 
-// Getting cookie parser to use for sessions and signin 
+// Getting cookie parser to use for sessions and Login 
 app.use(cookieParser());
 app.use(session({
     secret: "secret",
@@ -59,20 +58,20 @@ passport.use(new LocalStrategy({
 },
     function (username, password, done) {
         User.findOne({ username: username }, function (err, user) {
-            if (err) { 
+            if (err) {
                 return done(err);
             }
 
             if (!user) {
                 return done(null, false, { message: 'Incorrect username.' });
             }
-            
+
             if (!user.validPassword(password)) {
                 return done(null, false, { message: 'Incorrect password.' });
             }
             console.log("successfully logged in")
             return done(null, user);
-        
+
         });
     }
 ));
@@ -84,16 +83,20 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (id, done) {
     User.findById(id, function (err, user) {
         done(err, user);
+
     });
 });
 
-app.get('/logout', function(req, res){ 
-    console.log("logging out")
-    req.logout();
-    res.redirect('/');
-  });
 
-//getting passport for login
+// Destroying the session so that it logs the user out
+app.get('/logout', function (req, res) {
+    req.session.destroy(function (err) {
+        res.redirect('/');
+
+    });
+});
+
+// Getting passport for login
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
@@ -102,7 +105,7 @@ app.use(flash());
 // Define all the routes
 defineRoutes(app);
 
-// listening for requests
+// Listening for requests
 app.listen(3000, () => {
     console.log("Server is listening on port 3000");
 });

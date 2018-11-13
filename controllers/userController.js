@@ -42,7 +42,7 @@ module.exports.signup= function(req, res) {
     // Save the new user to the database
     newUser.save()
     .then(item => {
-        res.redirect('/viewall?success');
+        res.redirect('/login?success');
     })
     .catch(err => {
         res.redirect('/signup?fail');

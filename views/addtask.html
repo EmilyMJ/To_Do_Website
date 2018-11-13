@@ -45,11 +45,14 @@
             </li>
             <form class="form-inline">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>
             </form>
-            <li class="nav-item">
+            <form action="/logout" method="GET" class="form-inline">
+                <button class="btn btn-outline-light btn-info my-2 my-sm-0" href="../logout" style="margin-left: 20px" type="submit">Logout</button>
+            </form>
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="../logout">Logout</a>
-            </li>
+            </li> -->
         </ul>
     </div>
 </nav>
@@ -75,10 +78,10 @@
             <label for="content" class="col-sm-2 control-label">Task Description:</label>
             <input type="text" class="form-control" name="content" id="content" placeholder="Task Description">
         </div>
-        <!-- <div>
+        <div>
             <label for="date" class="col-sm-2 control-label">Due Date:</label>
             <input type="date" class="form-control" name="date" id="date" placeholder="Due Date">
-        </div> -->
+        </div>
         <div>
             <label for="priority" class="col-sm-2 control-label">Task Priority:</label>
             <!-- <input type="text" id="priority"> -->

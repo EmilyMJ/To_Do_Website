@@ -6,6 +6,7 @@ const TaskSchema = mongoose.Schema({
     userID: String,
     title: String,
     content: String,
+    date: Date,
     priority: String
 }, {
     timestamps: true
