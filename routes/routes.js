@@ -2,37 +2,28 @@ const passport = require('passport');
 
 const task = require('../controllers/controllers.js');
 const taskController = require('../controllers/taskController');
+const apiController = require('../controllers/apiController');
 const homeController = require('../controllers/homeController');
 const userController = require('../controllers/userController');
 
 module.exports = function(app) {
-    //CRUD 
-    // Create a Task (with taskId)
-    // app.post('/task', task.create);
+    // Add tasks - CREATE
+    app.post('/addtask', apiController.postTask);
+    app.get('/addtask', apiController.viewAddTask);
+    
+    // View tasks - READ
+    app.get('/viewall', apiController.viewAll);
 
-    // // Retrieve and read all Tasks 
-    // app.get('/task', task.findAll);
-
-    // // Retrieve and read a single Task 
-    // app.get('/task/:taskId', taskController.findOne);
-
-    // // Update a Tasknodemon app
-    // app.put('/task/:taskId', task.update);
+    //Edit tasks - UPDATE
+    app.get('/task/:taskId', apiController.viewEditTask);
+    app.post('/edittask', apiController.putTask);
 
     // Delete a Task
-    app.delete('/deleteTask/:taskId', taskController.deleteTask);
+    // app.delete('/deleteTask/:taskId', apiController.deleteTask);
+    app.post('/deleteTask', apiController.deleteTask);
 
     // Home
     app.get('/', homeController.home);
-
-    // Tasks
-    app.get('/viewall', taskController.viewAll);
-
-    app.post('/addtask', taskController.addTask);
-    app.get('/addtask', taskController.viewAddTask);
-
-    // edittask html
-    // app.get("/edittask", taskController.viewAll
 
     // login
     app.post('/login', userController.login);
