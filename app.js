@@ -6,6 +6,7 @@ const passport = require('passport');
 const app = express();
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const bcrypt = require('bcrypt');
 const flash = require('connect-flash');
 const LocalStrategy = require('passport-local').Strategy;
 const nunjucksEnv = nunjucks.configure('views', {

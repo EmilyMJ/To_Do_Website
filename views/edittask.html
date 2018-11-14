@@ -42,9 +42,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="../addtask">Add a Task</a>
             </li>
-            <form class="form-inline" >
-                    <!-- id="ViewAll" action="/viewAll" method="GET" -->
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="form-inline" method="GET" action="/search">
+                <input class="form-control mr-sm-4" type="search" placeholder="Search" name="search" id="search" aria-label="Search">
                 <button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>
             </form>
             <form action="/logout" method="GET" class="form-inline">
@@ -82,7 +81,7 @@
         <div>
             <label for="priority" class="col-sm-2 control-label">Task Priority:</label>
             <!-- <input type="text" id="priority"> -->
-            <select name="priority">
+            <select name="priority" value="{{ task.priority }}">
                 <option value="High">High</option>
                 <option value="Medium">Medium</option>
                 <option value="Low">Low</option>

@@ -96,25 +96,3 @@ exports.update = (req, res) => {
     });
 };
 
-// // Delete a task with the specified taskId in the request
-// exports.delete = (req, res) => {
-//     Task.findByIdAndRemove(req.params.taskId)
-//     .then(task => {
-//         if(!task) {
-//             return res.status(404).send({
-//                 message: "Task not found with id " + req.params.taskId
-//             });
-//         }
-//         res.send({message: "Task deleted successfully!"});
-//     }).catch(err => {
-//         if(err.kind === 'ObjectId' || err.name === 'NotFound') {
-//             return res.status(404).send({
-//                 message: "Task not found with id " + req.params.taskId
-//             });                
-//         }
-//         return res.status(500).send({
-//             message: "Could not delete task with id " + req.params.taskId
-//         });
-//     });
-// };
-

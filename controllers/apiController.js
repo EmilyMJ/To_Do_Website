@@ -1,3 +1,4 @@
+const dateFormat = require('dateformat');
 const Task = require('../models/task.js');
 //Requiring the Mongodb model Task
 
@@ -7,7 +8,7 @@ module.exports.postTask = function (req, res) {
     // Each task must relate to a UserID therefore you must be logged in for a task to be added
     if (!req.user._id) {
         return res.status(400).send({
-            
+
             message: "User id cannot be empty"
         });
     }
@@ -35,21 +36,26 @@ module.exports.postTask = function (req, res) {
         priority: req.body.priority || "No priority",
         userID: req.user._id
     })
-    .save()
-    .then(item => {
-        res.redirect('/viewall?success');
-    })
-    .catch(err => {
-        res.redirect('/addtask?fail');
-    });
+        .save()
+        .then(item => {
+            res.redirect('/viewall?created=success');
+        })
+        .catch(err => {
+            res.redirect('/addtask?created=error');
+        });
 }
 
 // Viewing all the tasks - READ
 module.exports.viewAll = function (req, res) {
-    Task.find({userID: req.user._id},function (err, result) {
-    
+    Task.find({ userID: req.user._id }, function (err, result) {
+        const updated = req.query.updated
+        const deleted = req.query.deleted
+        const created = req.query.created
         res.render('viewall.html', {
-            tasks: result
+            tasks: result,
+            updated,
+            deleted,
+            created
         });
     });
 };
@@ -59,11 +65,13 @@ module.exports.viewAddTask = function (req, res) {
 };
 
 module.exports.viewEditTask = function (req, res) {
-    Task.findOne({_id: req.params.taskId},function (err, result) {
+    Task.findOne({ _id: req.params.taskId }, function (err, result) {
         if (!err) {
-            console.log(result)
             return res.render('edittask.html', {
-                task: result
+                task: {
+                    ...result.toObject(),
+                    date: dateFormat(result.date, 'yyyy-mm-dd')
+                }
             });
         }
         res.redirect('/viewall')
@@ -73,7 +81,7 @@ module.exports.viewEditTask = function (req, res) {
 
 
 // Editing a task - UPDATE
-module.exports.putTask = function (req, res) {
+module.exports.editTask = function (req, res) {
     if (!req.user._id) {
         return res.status(400).send({
             message: "User id cannot be empty"
@@ -92,24 +100,14 @@ module.exports.putTask = function (req, res) {
         });
     }
 
-    if (req.body.taskId) {
-        return res.status(200).send({
-            message: "Task ID recognised"
-        });
-    }
-
-    // let date = req.body.date
-    // new Task({
-    //     title: req.body.title,
-    //     content: req.body.content || "No description",
-    //     date: new Date(req.body.date),
-    //     priority: req.body.priority || "No priority",
-    //     userID: req.body.userId
-    // })
-    Task.findOneAndUpdate({ _id: req.body.taskId }, req.body, function(err, result) {
-
+    Task.findOneAndUpdate({ _id: req.body.taskId }, req.body, function (err, result) {
+        if (!err) {
+            return res.redirect('/viewall?updated=success');
+        }
+        return res.redirect('/viewall?updated=error');
     })
 }
+
 
 
 
@@ -117,26 +115,44 @@ module.exports.putTask = function (req, res) {
 module.exports.deleteTask = function (req, res) {
     Task.findOneAndDelete({ _id: req.body.taskId }, function (err, result) {
         if (!err) {
-            return res.redirect('/viewall?success');
+            return res.redirect('/viewall?deleted=success');
         }
-        res.redirect('/viewall?fail');
+        return res.redirect('/viewall?deleted=error');
     });
 }
 
 
-//Search tasks 
+// Search tasks 
 module.exports.searchTask = function (req, res) {
-    console.log(req.query.search);
-
     Task.find({
-        title: req.query.search
-    },function (err, result) {
-        console.log(result);
-        return res.json({
-            task: result
-        });
+        $and: [
+            { userID: req.user._id },
+            {
+                $or: [
+                    { title: { '$regex' : req.query.search, '$options' : 'i' } },
+                    { content: { '$regex' : req.query.search, '$options' : 'i' } }
+                ]
+            }
+        ]
+    }, function (err, result) {
+        if (!err) {
+            return res.render(`search.html/search=${req.query.search}`, {
+                tasks: result
+            });
+        }
+        res.redirect('/viewall')
     });
 };
+//     Task.find({
+//         title: req.query.search
+//     },function (err, result) {
+//         console.log(result);
+//         return res.json({
+//             task: result
+//         });
+//     });
+// };
+
 
 
 
