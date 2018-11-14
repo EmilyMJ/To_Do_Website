@@ -5,38 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add Task</title>
-    <link rel="stylesheet" href="style.css">
+    <title>To Do List</title>
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css">
+                <link rel="stylesheet" href="style.css"> -->
     <link rel="stylesheet" href="/resources/styles/mobileindex.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="/resources/bootstrap-4.1.3-dist/css/bootstrap.min.css">
 </head>
 
 <body>
     <!-- Navigation bar with dark theme  -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">To Do List</a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavBar" aria-controls="myNavBar"
-            aria-expanded="false" aria-label="Toggle navigation ">
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavBar" aria-controls="myNavBar" aria-expanded="false"
+            aria-label="Toggle navigation ">
             <span class="navbar-toggler-icon"></span>
         </button>
-    
+
         <!-- Menu List -->
         <!-- Set the class to active so that it highlights and lets the user know what page they are on -->
         <div class="collapse navbar-collapse" id="myNavBar">
             <ul class="nav navbar-nav">
-    
+
                 <li class="active">
                     <a class="nav-link" href="../viewAll">View all Tasks</a>
                 </li>
-    
+
                 <li class="nav-item">
                     <a class="nav-link" href="../addtask">Add a Task</a>
                 </li>
@@ -50,45 +43,53 @@
         </div>
     </nav>
 
-    <div class="col-md-12 mb-4 text-black text-center">
-            <h1> The Following Tasks Match Your Search Results</h1>
-     </div>
+    <body>
+    
+
+        <div class="col-md-12 mb-4 text-black text-center">
+            <h1> Search Results</h1>
+        </div>
 
 
 
-    <form id="mySearch" action="/searchTask" method="GET">
+        <form id="mySearch" action="/searchTask" method="GET">
 
-        <div class="row">
-            {% for task in tasks %}
-            <div id="taskTile">
-                <div class="tile">
-                    <div class="col-xs-12">
-                        <a href="/task/{{ task.id }}">{{ task.title }}</a>
+            <div class="row">
+                {% for task in tasks %}
+                <div id="taskTile">
+                    <div class="tile">
+                        <div class="col-xs-12">
+                            <a href="/task/{{ task.id }}">{{ task.title }}</a>
+                        </div>
+                        <div class="col-xs-12 text-black">
+                            {{ task.content }}
+                        </div>
+                        <div class="col-xs-12 text-black">Priority: {{ task.priority }}
+                        </div>
+
+                        <div class="col-xs-12 text-black">Due Date: {{ task.date }}
+                        </div>
+                        <!-- Delete the task from the database -->
+                        <form action="/deleteTask" method="POST">
+                            <input type="hidden" name="taskId" value="{{task.id}}">
+                            <button id="deleteButton" class="btn btn-light" type="submit('{{ task._id }}')">Delete Task
+                            </button>
+                        </form>
                     </div>
-                    <div class="col-xs-12 text-black">
-                        {{ task.content }}
-                    </div>
-                    <div class="col-xs-12 text-black">Priority: {{ task.priority }}
-                    </div>
-
-                    <div class="col-xs-12 text-black">Due Date: {{ task.date }}
-                    </div>
-                    <!-- Delete the task from the database -->
-                    <form action="/deleteTask" method="POST">
-                        <input type="hidden" name="taskId" value="{{task.id}}">
-                        <button id="deleteButton" class="btn btn-light" type="submit('{{ task._id }}')">Delete Task
-                        </button>
-                    </form>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-        </div>
-</body>
+            </div>
+    </body>
 
 
-<footer>
-    <script> src = "../js/routes.js"</script>
-</footer>
+    <footer>
+        <!-- <script> src = "../js/routes.js"</script>??? -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+        <script src="/resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
+    </footer>
 
 </html>

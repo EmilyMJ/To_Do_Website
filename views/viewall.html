@@ -15,23 +15,23 @@
 <body>
 
 
-<!-- Navigation bar with dark theme  -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- Navigation bar with dark theme  -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">To Do List</a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavBar" aria-controls="myNavBar"
-            aria-expanded="false" aria-label="Toggle navigation ">
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavBar" aria-controls="myNavBar" aria-expanded="false"
+            aria-label="Toggle navigation ">
             <span class="navbar-toggler-icon"></span>
         </button>
-    
+
         <!-- Menu List -->
         <!-- Set the class to active so that it highlights and lets the user know what page they are on -->
         <div class="collapse navbar-collapse" id="myNavBar">
             <ul class="nav navbar-nav">
-    
+
                 <li class="active">
                     <a class="nav-link" href="../viewAll">View all Tasks</a>
                 </li>
-    
+
                 <li class="nav-item">
                     <a class="nav-link" href="../addtask">Add a Task</a>
                 </li>
@@ -47,86 +47,85 @@
 
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 mb-4 text-black text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-4 text-black text-center">
 
-            <h1> View All Tasks</h1>
-            <p> These are your tasks, to edit a task click on the Task Title.</p>
+                <h1> View All Tasks</h1>
+                <p> These are your tasks, to edit a task click on the Task Title.</p>
 
-            <div class="row">
-                <div class="col-xs-12">
-                    {% if (updated === 'success') %}
+                <div class="row">
+                    <div class="col-xs-12">
+                        {% if (updated === 'success') %}
                         <div class="alert alert-success">
                             Task Updated!
                         </div>
-                    {% endif %}
-                    {% if (updated === 'error') %}
+                        {% endif %} {% if (updated === 'error') %}
                         <div class="alert alert-danger">
                             Task Failed to Update!
                         </div>
-                    {% endif %}
-                    {% if (deleted === 'success') %}
+                        {% endif %} {% if (deleted === 'success') %}
                         <div class="alert alert-success">
                             Task Deleted!
                         </div>
-                    {% endif %}
-                    {% if (deleted === 'error') %}
+                        {% endif %} {% if (deleted === 'error') %}
                         <div class="alert alert-danger">
                             Task Failed to Delete!
                         </div>
-                    {% endif %}
-                    {% if (created === 'success') %}
+                        {% endif %} {% if (created === 'success') %}
                         <div class="alert alert-success">
                             Task Created!
                         </div>
-                    {% endif %}
-                    {% if (created === 'error') %}
+                        {% endif %} {% if (created === 'error') %}
                         <div class="alert alert-danger">
                             Task Failed to Create!
                         </div>
-                    {% endif %}
-                </div>
-            </div>
-
-            <form id="ViewAll" action="/viewAll" method="GET"></form>
-            <!-- Displaying tasks from the database -->
-
-            <div class="row">
-                {% for task in tasks %}
-                <div id="taskTile">
-                    <div class="tile">
-                        <div class="col-xs-12">
-                            <a href="/task/{{ task.id }}">{{ task.title }}</a>
-                        </div>
-                        <div class="col-xs-12 text-black">
-                            {{ task.content }}
-                        </div>
-                        <div class="col-xs-12 text-black">Priority: {{ task.priority }}
-                        </div>
-
-                        <div class="col-xs-12 text-black">Due Date: {{ task.date }}
-                        </div>
-                        <!-- Delete the task from the database -->
-                        <form action="/deleteTask" method="POST">
-                            <input type="hidden" name="taskId" value="{{task.id}}">
-                            <button id="deleteButton" class="btn btn-light" type="submit('{{ task._id }}')">Delete Task
-                            </button>
-                        </form>
+                        {% endif %}
                     </div>
                 </div>
-                {% endfor %}
+
+                <form id="ViewAll" action="/viewAll" method="GET"></form>
+                <!-- Displaying tasks from the database -->
+
+                <div class="row">
+                    {% for task in tasks %}
+                    <div id="taskTile">
+                        <div class="tile">
+                            <div class="col-xs-12">
+                                <a href="/task/{{ task.id }}">{{ task.title }}</a>
+                            </div>
+                            <div class="col-xs-12 text-black">
+                                {{ task.content }}
+                            </div>
+                            <div class="col-xs-12 text-black">Priority: {{ task.priority }}
+                            </div>
+
+                            <div class="col-xs-12 text-black">Due Date: {{ task.date }}
+                            </div>
+                            <!-- Delete the task from the database -->
+                            <form action="/deleteTask" method="POST">
+                                <input type="hidden" name="taskId" value="{{task.id}}">
+                                <button id="deleteButton" class="btn btn-light" type="submit('{{ task._id }}')">Delete Task
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-<script src="/resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
+
 
 </body>
+
+<footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="/resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
+</footer>
 
 </html>
