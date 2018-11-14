@@ -13,6 +13,8 @@ const nunjucksEnv = nunjucks.configure('views', {
     autoescape: true,
     express: app
 });
+// Requiring everything that is needed to run the app
+
 
 // Configuring the database and requiring mongoose
 const dbConfig = require('./config/config.js');
@@ -47,7 +49,6 @@ app.use(bodyParser.json())
 app.use(cookieParser());
 app.use(session({
     secret: "secret",
-    //store: sessionStore, // connect-mongo session store
     proxy: true,
     resave: true,
     saveUninitialized: true
@@ -97,11 +98,10 @@ app.get('/logout', function (req, res) {
     });
 });
 
-// Getting passport for login
+// Getting passport for login 
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-
 
 // Define all the routes
 defineRoutes(app);
@@ -110,3 +110,5 @@ defineRoutes(app);
 app.listen(3000, () => {
     console.log("Server is listening on port 3000");
 });
+
+// http://www.passportjs.org/docs/downloads/html/ used to help to understand passport.js

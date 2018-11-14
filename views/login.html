@@ -1,4 +1,8 @@
-{% extends "template.html" %} {% block content %}
+{% extends "template.html" %} 
+{% block content %}
+<!-- Template.html loaded for the features that are used on index, signup and login to save loading in the same items  -->
+
+<!-- Main header and positing of header -->
 <div class="col-md-12 mb-4 text-black text-center">
   <h1 class="text-centre">Login</h1>
   <p>Login to your account to continue</p>
@@ -8,6 +12,7 @@
 <p>{{ message }}</p>
 {% endif %}
 
+<!-- Login form using post and then comparing against the users in the Mongo database to retrieve login information -->
 <form action="/login" method="post">
 
   <div class="login-form">
@@ -31,8 +36,8 @@
 <!-- This links to the signup page if people do not have an account to login -->
     <div href="../signup"class="form-footer text-black" style="margin-left: 20px">
       Don't have an account?
-      <a href="../signup">Sign Up now!</a></div>
-  </div>
+      <a href="../signup">Sign Up now!</a>
+    </div>
   </div>
 </form>
 {% endblock %}

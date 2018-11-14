@@ -24,9 +24,7 @@ const UserSchema = mongoose.Schema({
         type: String
         
     },
-//    tasks: {
-//         type: [Task.schema]
-//     },
+
     active: {
         type: Boolean
     }
@@ -35,18 +33,6 @@ const UserSchema = mongoose.Schema({
 UserSchema.methods.validPassword = function(password) {
     return this.password == password;
 };
-
-
-
-// generating a hash
-// UserSchema.methods.generateHash = function(password) {
-//     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-// };
-
-// // checking if password is valid
-// UserSchema.methods.validPassword = function(password) {
-//     return bcrypt.compareSync(password, this.local.password);
-// };
 
 const User = mongoose.model('User', UserSchema);
 

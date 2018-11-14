@@ -1,6 +1,6 @@
 const passport = require('passport');
 
-const task = require('../controllers/controllers.js');
+// const task = require('../controllers/controllers.js');
 // const taskController = require('../controllers/taskController');
 const apiController = require('../controllers/apiController');
 const homeController = require('../controllers/homeController');
@@ -18,7 +18,7 @@ module.exports = function(app) {
     app.get('/task/:taskId', apiController.viewEditTask);
     app.post('/editTask', apiController.editTask);
 
-    // Delete a Task
+    // Delete a Task - DELETE
     // app.delete('/deleteTask/:taskId', apiController.deleteTask);
     app.post('/deleteTask', apiController.deleteTask);
 
@@ -29,7 +29,7 @@ module.exports = function(app) {
     // Home
     app.get('/', homeController.home);
 
-    // login
+    // login and sign up controllers 
     app.post('/login', userController.login);
     app.get('/login', userController.viewLogin);
 

@@ -20,7 +20,7 @@
 </head>
 <body>
 
-<!-- Navigation bar with dark Bootstrap theme  -->
+<!-- Navigation bar with dark Bootstrap theme a toggle is used in order to make the nav bar responsive for mobile devices -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">To Do List</a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavBar" aria-controls="myNavBar" aria-expanded="false"
@@ -54,6 +54,8 @@
     <div class="col-md-12 mb-4 text-black text-center">
         <h1> Add a New Task</h1>
     </div>
+
+    <!-- Add Task form which is posted to the database -->
     <form id="myAddForm" action="/addTask" method="POST">
         <div>
             <label for="title" class="col-sm-2 control-label">Task Title:</label>
@@ -69,7 +71,6 @@
         </div>
         <div>
             <label for="priority" class="col-sm-2 control-label">Task Priority:</label>
-            <!-- <input type="text" id="priority"> -->
             <select name="priority">
                 <option value="High">High</option>
                 <option value="Medium">Medium</option>

@@ -1,6 +1,7 @@
 {% extends "template.html" %}
 
 {% block content %}
+<!-- Template.html loaded for the features that are used on index, signup and login to save loading in the same items  -->
 <div class="row">
     <div class="col-md-12 mb-4 text-black text-center">
         <!-- Main header -->
@@ -8,13 +9,14 @@
             <strong>To Do List</strong>
         </h1>
         <hr class="hr-light my-4">
+        <!-- Sub header -->
         <h5 class="text-uppercase mb-4 text-black">
             <strong>Project Management</strong>
         </h5>
-        <!-- Sign In and Sign Up buttons with a change of colour when hovered over -->
+        <!-- Sign in and Sign up buttons with a change of colour when hovered over -->
+        <!-- All users must be signed in to use the app -->
         <a class="btn border-black btn-change" href="/login">Login</a>
         <a class="btn border-black btn-change" href="/signup">Sign Up</a>
-        <!-- Simple front page with minimalistic writing which leads onto either a sign in or sign up page so all users must be signed in to use the app -->
     </div>
 </div>
 {% endblock %}
