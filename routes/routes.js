@@ -22,6 +22,10 @@ module.exports = function(app) {
     // app.delete('/deleteTask/:taskId', apiController.deleteTask);
     app.post('/deleteTask', apiController.deleteTask);
 
+
+    // Search a Task
+    app.get('/search', apiController.searchTask);
+
     // Home
     app.get('/', homeController.home);
 

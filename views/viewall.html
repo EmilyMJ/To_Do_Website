@@ -16,24 +16,25 @@
 <!-- Navigation bar with dark theme  -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">To Do List</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-        aria-expanded="false" aria-label="Toggle navigation">
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#menuPrincipal" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation ">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <!-- Menu List -->
     <!-- Set the class to active so that it highlights and lets the user know what page they are on -->
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <li class="nav-item">
+    <div class="collapse navbar-collapse" id="myNavBar">
+        <ul class="nav navbar-nav">
+
+            <li class="active">
                 <a class="nav-link" href="../viewAll">View all Tasks</a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="../addtask">Add a Task</a>
             </li>
-        </ul>
-            <form class="form-inline">
-                <input class="form-control mr-sm-4" type="search" placeholder="Search" aria-label="Search">
+            <form class="form-inline" method="GET" action="/search">
+                <input class="form-control mr-sm-4" type="search" placeholder="Search" name="search" id="search" aria-label="Search">
                 <button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>
             </form>
             <form action="/logout" method="GET" class="form-inline">
@@ -76,12 +77,9 @@
                 </div>
             </div>
             {% endfor %}
-
         </div>
     </div>
 </div>
-<!-- <script src="../controllers/apiController.js"></script> -->
-
 
 <script> src = "../js/routes.js"</script>
 

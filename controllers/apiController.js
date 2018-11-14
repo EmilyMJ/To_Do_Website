@@ -4,6 +4,7 @@ const Task = require('../models/task.js');
 // Adding a task - CREATE
 module.exports.postTask = function (req, res) {
     console.log(req.user)
+    // Each task must relate to a UserID therefore you must be logged in for a task to be added
     if (!req.user._id) {
         return res.status(400).send({
             
@@ -11,12 +12,14 @@ module.exports.postTask = function (req, res) {
         });
     }
 
+    // Error message will appear if the user tries to submit a task without inputting a task title
     if (!req.body.title) {
         return res.status(400).send({
             message: "Task title can not be empty"
         });
     }
 
+    // Date must be put in a valid format for the task to be successfully added 
     if (new Date(req.body.date) === "Invalid Date" || isNaN(new Date(req.body.date))) {
         return res.status(400).send({
             message: "Date is in an invalid format"
@@ -67,7 +70,9 @@ module.exports.viewEditTask = function (req, res) {
     });
 };
 
-// PUT Editing a task - UPDATE
+
+
+// Editing a task - UPDATE
 module.exports.putTask = function (req, res) {
     if (!req.user._id) {
         return res.status(400).send({
@@ -106,6 +111,8 @@ module.exports.putTask = function (req, res) {
     })
 }
 
+
+
 // Deleting a task - DELETE
 module.exports.deleteTask = function (req, res) {
     Task.findOneAndDelete({ _id: req.body.taskId }, function (err, result) {
@@ -115,4 +122,22 @@ module.exports.deleteTask = function (req, res) {
         res.redirect('/viewall?fail');
     });
 }
+
+
+//Search tasks 
+module.exports.searchTask = function (req, res) {
+    console.log(req.query.search);
+
+    Task.find({
+        title: req.query.search
+    },function (err, result) {
+        console.log(result);
+        return res.json({
+            task: result
+        });
+    });
+};
+
+
+
 
