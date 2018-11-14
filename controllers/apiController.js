@@ -136,7 +136,8 @@ module.exports.searchTask = function (req, res) {
         ]
     }, function (err, result) {
         if (!err) {
-            return res.render(`search.html/search=${req.query.search}`, {
+            return res.render('search.html', {
+                search: req.query.search,
                 tasks: result
             });
         }

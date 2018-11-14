@@ -20,6 +20,41 @@
 </head>
 
 <body>
+    <!-- Navigation bar with dark theme  -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">To Do List</a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavBar" aria-controls="myNavBar"
+            aria-expanded="false" aria-label="Toggle navigation ">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <!-- Menu List -->
+        <!-- Set the class to active so that it highlights and lets the user know what page they are on -->
+        <div class="collapse navbar-collapse" id="myNavBar">
+            <ul class="nav navbar-nav">
+    
+                <li class="active">
+                    <a class="nav-link" href="../viewAll">View all Tasks</a>
+                </li>
+    
+                <li class="nav-item">
+                    <a class="nav-link" href="../addtask">Add a Task</a>
+                </li>
+                <form class="form-inline" method="GET" action="/search">
+                    <input class="form-control mr-sm-4" type="search" placeholder="Search" name="search" id="search" aria-label="Search">
+                    <button class="btn btn-info my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                <form action="/logout" method="GET" class="form-inline">
+                    <button class="btn btn-outline-light btn-info my-2 my-sm-0" href="../logout" style="margin-left: 20px" type="submit">Logout</button>
+                </form>
+        </div>
+    </nav>
+
+    <div class="col-md-12 mb-4 text-black text-center">
+            <h1> The Following Tasks Match Your Search Results</h1>
+     </div>
+
+
 
     <form id="mySearch" action="/searchTask" method="GET">
 
@@ -51,8 +86,9 @@
         </div>
 </body>
 
-</body>
 
-<script> src = "../js/routes.js"</script>
+<footer>
+    <script> src = "../js/routes.js"</script>
+</footer>
 
 </html>
