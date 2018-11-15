@@ -7,7 +7,6 @@ const Task = require('../models/task.js');
 
 // CREATE - adding a task using the POST request
 module.exports.postTask = function (req, res) {
-    console.log(req.user)
     // Each task must relate to a UserID therefore you must be logged in for a task to be added
     if (!req.user._id) {
         return res.status(400).send({
